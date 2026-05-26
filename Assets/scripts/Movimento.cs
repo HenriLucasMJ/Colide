@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+    using Unity.VisualScripting;
 using UnityEngine;
 
 public class NewMonoBehaviourScript : MonoBehaviour
@@ -9,8 +9,10 @@ public class NewMonoBehaviourScript : MonoBehaviour
     private float horizontal;
     [SerializeField]
     private float movimentoSpeed;
+    [SerializeField]
+    private float jumpForce = 10f;
 
-        private bool facingRight;
+    private bool facingRight;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,7 +29,10 @@ public class NewMonoBehaviourScript : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         HandMovimento(horizontal);
 
-
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            myRigidbody.linearVelocity = new Vector2(myRigidbody.linearVelocity.x, jumpForce-5);
+        }
 
 
     }
